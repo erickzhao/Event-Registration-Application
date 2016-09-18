@@ -3,6 +3,9 @@ package ca.mcgill.ecse321.eventregistration.controller;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.sql.Time;
+import java.sql.Date;
+import java.util.Calendar;
 
 import org.junit.After;
 import org.junit.BeforeClass;
@@ -121,12 +124,103 @@ public class TestEventRegistrationController {
 		//check no change in memory
 		assertEquals(0, rm.getParticipants().size());
 	}
+	
+	@Test
+	public void testCreateEvent(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getEvents().size());
+		
+		String name = "Soccer Game";
+		Calendar c = Calendar.getInstance();
+		c.set(2016,Calendar.OCTOBER,16,9,00,0);
+		Date eventDate = new Date(c.getTimeInMillis());
+		Time startTime = new Time (c.getTimeInMillis());
+		c.set(2016,Calendar.OCTOBER,16,10,30,0);
+		Time endTime = new Time(c.getTimeInMillis());
+		
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.createEvent(name, eventDate, startTime, endTime);
+		} catch (InvalidInputException e){
+			//check that no error occurred
+			fail();
+		}
+		
+		//check model in memory
+		checkResultEvent(name, eventDate, startTime, endTime, rm);
+		
+		RegistrationManager rm2 = (RegistrationManager) PersistenceXStream.loadFromXMLwithXStream();
+		
+		//check file contents
+		checkResultEvent(name, eventDate, startTime, endTime, rm2);
+	}
+	
+	@Test
+	public void testRegister(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getRegistrations().size());
+		
+		String participantName = "Oscar";
+		Participant participant = new Participant(participantName);
+		rm.addParticipant(participant);
+		assertEquals(1, rm.getParticipants().size());
+		
+		String eventName = "Soccer Game";
+		Calendar c = Calendar.getInstance();
+		c.set(2016,Calendar.OCTOBER,16,9,00,0);
+		Date eventDate = new Date(c.getTimeInMillis());
+		Time startTime = new Time(c.getTimeInMillis());
+		c.set(2016, Calendar.OCTOBER,16,10,30,0);
+		Time endTime = new Time (c.getTimeInMillis());
+		Event event = new Event(eventName, eventDate, startTime, endTime);
+		rm.addEvent(event);
+		assertEquals(1, rm.getEvents().size());
+		
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.register(participant, event);
+		} catch (InvalidInputException e){
+			//check that no error occurred
+			fail();
+		}
+		
+		//check model in memory
+		checkResultRegister(participantName, eventName, eventDate, startTime, endTime, rm);
+		
+		RegistrationManager rm2 = (RegistrationManager) PersistenceXStream.loadFromXMLwithXStream();
+		
+		//check file contents
+		checkResultRegister(participantName, eventName, eventDate, startTime, endTime, rm2);
+	}
 
 	private void checkResultParticipant(String name, RegistrationManager rm) {
 		assertEquals(1, rm.getParticipants().size());
 		assertEquals(name, rm.getParticipant(0).getName());
 		assertEquals(0, rm.getEvents().size());
 		assertEquals(0, rm.getRegistrations().size());
+	}
+	
+	private void checkResultEvent(String name, Date eventDate, Time startTime, Time endTime, RegistrationManager rm){
+		assertEquals(0, rm.getParticipants().size());
+		assertEquals(1, rm.getEvents().size());
+		assertEquals(name, rm.getEvent(0).getName());
+		assertEquals(eventDate.toString(), rm.getEvent(0).getEventDate().toString());
+		assertEquals(startTime.toString(),rm.getEvent(0).getStartTime().toString());
+		assertEquals(endTime.toString(),rm.getEvent(0).getEndTime().toString());
+		assertEquals(0, rm.getRegistrations().size());
+	}
+	
+	private void checkResultRegister (String participantName, String eventName, Date eventDate, Time startTime, Time endTime, RegistrationManager rm){
+		assertEquals(1, rm.getParticipants().size());
+		assertEquals(participantName, rm.getParticipant(0).getName());
+		assertEquals(1, rm.getEvents().size());
+		assertEquals(eventName, rm.getEvent(0).getName());
+		assertEquals(eventDate.toString(), rm.getEvent(0).getEventDate().toString());
+		assertEquals(startTime.toString(), rm.getEvent(0).getStartTime().toString());
+		assertEquals(endTime.toString(), rm.getEvent(0).getEndTime().toString());
+		assertEquals(1, rm.getRegistrations().size());
+		assertEquals(rm.getEvent(0), rm.getRegistration(0).getEvent());
+		assertEquals(rm.getParticipant(0), rm.getRegistration(0).getParticipant());
 	}
 
 }

@@ -1,7 +1,7 @@
 <manager id="1">
   <registrations id="2">
     <registration id="3">
-      <id>1</id>
+      <id>2</id>
       <participant id="4">
         <name>Martin</name>
       </participant>
@@ -13,7 +13,7 @@
       </event>
     </registration>
     <registration id="9">
-      <id>2</id>
+      <id>3</id>
       <participant id="10">
         <name>Jennifer</name>
       </participant>
