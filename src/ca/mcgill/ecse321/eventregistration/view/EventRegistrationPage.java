@@ -188,8 +188,8 @@ public class EventRegistrationPage extends JFrame {
 								.addComponent(addEventButton)))
 							);
 		
-		layout.linkSize(SwingConstants.HORIZONTAL, new java.awt.Component[] {addParticipantButton, participantNameTextField});
 		layout.linkSize(SwingConstants.HORIZONTAL, new java.awt.Component[] {registerButton,participantLabel});
+		layout.linkSize(SwingConstants.HORIZONTAL, new java.awt.Component[] {addParticipantButton, participantNameTextField});
 		layout.linkSize(SwingConstants.HORIZONTAL, new java.awt.Component[] {addEventButton, eventNameTextField});
 			
 		layout.setVerticalGroup(
@@ -216,8 +216,8 @@ public class EventRegistrationPage extends JFrame {
 							.addComponent(endTimeLabel)
 							.addComponent(endTimeSpinner))
 					.addGroup(layout.createParallelGroup()
-							.addComponent(addEventButton)
-							.addComponent(addParticipantButton))
+							.addComponent(addParticipantButton)
+							.addComponent(addEventButton))
 					);
 			
 			pack();
@@ -230,6 +230,7 @@ public class EventRegistrationPage extends JFrame {
 		if (error == null || error.length() == 0){
 			//participant list
 			participants = new HashMap<Integer, Participant>();
+			participantList.removeAllItems();
 			Iterator<Participant> pIt = rm.getParticipants().iterator();
 			Integer index = 0;
 			while (pIt.hasNext()){
