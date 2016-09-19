@@ -241,6 +241,21 @@ public class EventRegistrationPage extends JFrame {
 			}
 			selectedParticipant = -1;
 			participantList.setSelectedIndex(selectedParticipant);
+			
+			//event list
+			events = new HashMap<Integer, Event>();
+			eventList.removeAllItems();
+			Iterator<Event> eIt = rm.getEvents().iterator();
+			index = 0;
+			while(eIt.hasNext()){
+				Event e = eIt.next();
+				events.put(index, e);
+				eventList.addItem(e.getName());
+				index++;
+			}
+			selectedEvent = -1;
+			eventList.setSelectedIndex(selectedEvent);
+			
 			//participant
 			participantNameTextField.setText("");
 			//event
