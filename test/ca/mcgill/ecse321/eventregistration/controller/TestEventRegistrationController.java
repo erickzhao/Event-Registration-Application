@@ -156,6 +156,117 @@ public class TestEventRegistrationController {
 	}
 	
 	@Test
+	public void testCreateEventNull(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getEvents().size());
+		
+		String name = null;
+		Date eventDate = null;
+		Time startTime = null;
+		Time endTime = null;
+		
+		String error = null;
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.createEvent(name, eventDate, startTime, endTime);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals("Event name cannot be empty! Event date cannot be empty! Event start time cannot be empty! Event end time cannot be empty!", error);
+		
+		// check model in memory
+		assertEquals(0, rm.getEvents().size());
+	}
+	
+	@Test
+	public void testCreateEventEmpty(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getEvents().size());
+		
+		String name = "";
+		Calendar c = Calendar.getInstance();
+		c.set(2016,Calendar.OCTOBER,16,9,00,0);
+		Date eventDate = new Date(c.getTimeInMillis());
+		Time startTime = new Time (c.getTimeInMillis());
+		c.set(2016,Calendar.OCTOBER,16,10,30,0);
+		Time endTime = new Time(c.getTimeInMillis());
+		
+		String error = null;
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.createEvent(name, eventDate, startTime, endTime);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Event name cannot be empty!", error);
+		
+		// check model in memory
+		assertEquals(0, rm.getEvents().size());
+	}		
+	
+	@Test
+	public void testCreateEventSpaces(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getEvents().size());
+		
+		String name = "";
+		Calendar c = Calendar.getInstance();
+		c.set(2016,Calendar.OCTOBER,16,9,00,0);
+		Date eventDate = new Date(c.getTimeInMillis());
+		Time startTime = new Time (c.getTimeInMillis());
+		c.set(2016,Calendar.OCTOBER,16,10,30,0);
+		Time endTime = new Time(c.getTimeInMillis());
+		
+		String error = null;
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.createEvent(name, eventDate, startTime, endTime);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Event name cannot be empty!", error);
+		
+		// check model in memory
+		assertEquals(0, rm.getEvents().size());
+	}
+	
+	@Test
+	public void testCreateEventEndTimeBeforeStartTime(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getEvents().size());
+		
+		String name = "Soccer Game";
+		Calendar c = Calendar.getInstance();
+		c.set(2016,Calendar.OCTOBER,16,9,00,0);
+		Date eventDate = new Date(c.getTimeInMillis());
+		Time startTime = new Time (c.getTimeInMillis());
+		c.set(2016,Calendar.OCTOBER,16,8,59,59);
+		Time endTime = new Time(c.getTimeInMillis());
+		
+		String error = null;
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.createEvent(name, eventDate, startTime, endTime);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Event end time cannot be before event start time!", error);
+		
+		// check model in memory
+		assertEquals(0, rm.getEvents().size());
+	}
+	
+	
+	
+	@Test
 	public void testRegister(){
 		RegistrationManager rm = RegistrationManager.getInstance();
 		assertEquals(0, rm.getRegistrations().size());
@@ -191,6 +302,71 @@ public class TestEventRegistrationController {
 		
 		//check file contents
 		checkResultRegister(participantName, eventName, eventDate, startTime, endTime, rm2);
+	}
+	
+	@Test
+	public void testRegisterNull(){
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getRegistrations().size());
+		
+		Participant participant = null;
+		assertEquals(0, rm.getParticipants().size());
+		
+		Event event = null;
+		assertEquals(0, rm.getEvents().size());
+		
+		String error = null;
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.register(participant, event);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Participant needs to be selected for registration! Event needs to be selected for registration!", error);
+		
+		// check model in memory
+		assertEquals(0, rm.getRegistrations().size());
+		assertEquals(0, rm.getParticipants().size());
+		assertEquals(0, rm.getEvents().size());
+	
+	}
+	
+	@Test
+	public void testRegisterParticipantAndEventDoNotExist() {
+		RegistrationManager rm = RegistrationManager.getInstance();
+		assertEquals(0, rm.getRegistrations().size());
+		
+		String nameP = "Oscar";
+		Participant participant = new Participant(nameP);
+		assertEquals(0, rm.getParticipants().size());
+		
+		String nameE = "Soccer Game";
+		Calendar c = Calendar.getInstance();
+		c.set(2016,Calendar.OCTOBER,16,9,00,0);
+		Date eventDate = new Date(c.getTimeInMillis());
+		Time startTime = new Time(c.getTimeInMillis());
+		c.set(2016, Calendar.OCTOBER,16,10,30,0);
+		Time endTime = new Time(c.getTimeInMillis());
+		Event event = new Event(nameE, eventDate, startTime, endTime);
+		assertEquals(0, rm.getEvents().size());
+		
+		String error = null;
+		EventRegistrationController erc = new EventRegistrationController();
+		try{
+			erc.register(participant, event);
+		} catch (InvalidInputException e){
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Participant does not exist! Event does not exist!", error);
+		
+		// check model in memory
+		assertEquals(0, rm.getRegistrations().size());
+		assertEquals(0, rm.getParticipants().size());
+		assertEquals(0, rm.getEvents().size());
 	}
 
 	private void checkResultParticipant(String name, RegistrationManager rm) {
