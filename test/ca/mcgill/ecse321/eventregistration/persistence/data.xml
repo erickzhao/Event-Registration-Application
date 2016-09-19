@@ -1,7 +1,7 @@
 <manager id="1">
   <registrations id="2">
-    <registration id="3">
-      <id>2</id>
+    <ca.mcgill.ecse321.eventregistration.model.Registration id="3">
+      <id>1</id>
       <participant id="4">
         <name>Martin</name>
       </participant>
@@ -11,14 +11,14 @@
         <startTime id="7">08:30:00</startTime>
         <endTime id="8">10:00:00</endTime>
       </event>
-    </registration>
-    <registration id="9">
-      <id>3</id>
+    </ca.mcgill.ecse321.eventregistration.model.Registration>
+    <ca.mcgill.ecse321.eventregistration.model.Registration id="9">
+      <id>2</id>
       <participant id="10">
         <name>Jennifer</name>
       </participant>
       <event reference="5"/>
-    </registration>
+    </ca.mcgill.ecse321.eventregistration.model.Registration>
   </registrations>
   <participants id="11">
     <participant reference="4"/>
