@@ -112,7 +112,7 @@ public class EventRegistrationPage extends JFrame {
 		p.put("text.month","Month");
 		p.put("text.year","Year");
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-		// HAS ERROR > eventDatePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		eventDatePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
 		
 		eventDateLabel = new JLabel();
 		startTimeSpinner = new JSpinner(new SpinnerDateModel());

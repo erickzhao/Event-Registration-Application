@@ -7,6 +7,9 @@
     <participant id="5">
       <name>Jennifer</name>
     </participant>
+    <participant id="6">
+      <name></name>
+    </participant>
   </participants>
-  <events id="6"/>
+  <events id="7"/>
 </manager>
