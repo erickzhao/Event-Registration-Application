@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -49,4 +51,37 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private Bundle getTimeFromLabel(CharSequence text) {
+        Bundle rtn = new Bundle();
+        String comps[] = text.toString().split(":");
+        int hour = 12;
+        int minute = 0;
+        if (comps.length == 2) {
+            hour = Integer.parseInt(comps[0]); minute = Integer.parseInt(comps[1]);
+        }
+        rtn.putInt("hour", hour); rtn.putInt("minute", minute);
+        return rtn; }
+    private Bundle getDateFromLabel(CharSequence text) { Bundle rtn = new Bundle();
+        String comps[] = text.toString().split("-");
+        int day = 1;
+        int month = 1;
+        int year = 1;
+        if (comps.length == 3) {
+            day = Integer.parseInt(comps[0]); month = Integer.parseInt(comps[1]); year = Integer.parseInt(comps[2]);
+        }
+        rtn.putInt("day", day); rtn.putInt("month", month-1); rtn.putInt("year", year);
+        return rtn;
+    }
+
+    public void setTime(int id, int h, int m) {
+        TextView tv = (TextView) findViewById(id);
+        tv.setText(String.format("%02d:%02d", h, m));
+    }
+
+    public void setDate(int id, int d, int m, int y) {
+        TextView tv = (TextView) findViewById(id);
+        tv.setText(String.format("%02d-%02d-%04d", d, m + 1, y));
+    }
+
 }
