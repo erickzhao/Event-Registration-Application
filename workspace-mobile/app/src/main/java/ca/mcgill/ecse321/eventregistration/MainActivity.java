@@ -97,6 +97,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void showDatePickerDialog(View v) {
+        TextView tf = (TextView) v;
+        Bundle args = getDateFromLabel(tf.getText());
+        args.putInt("id", v.getId());
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.setArguments(args);
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void showTimePickerDialog(View v) {
+        TextView tf = (TextView) v;
+        Bundle args = getDateFromLabel(tf.getText());
+        args.putInt("id", v.getId());
+        TimePickerFragment newFragment = new TimePickerFragment();
+        newFragment.setArguments(args);
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
     private Bundle getTimeFromLabel(CharSequence text) {
         Bundle rtn = new Bundle();
         String comps[] = text.toString().split(":");
