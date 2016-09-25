@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         TextView eventName = (TextView) findViewById(R.id.newevent_name);
         TextView eventStartTime = (TextView) findViewById(R.id.newevent_start_time);
         TextView eventEndTime = (TextView) findViewById(R.id.newevent_end_time);
-        TextView eventTextView = (TextView) findViewById(R.id.newevent_name);
+        TextView eventDate = (TextView) findViewById(R.id.newevent_date);
 
         EventRegistrationController ec = new EventRegistrationController();
 
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showTimePickerDialog(View v) {
         TextView tf = (TextView) v;
-        Bundle args = getDateFromLabel(tf.getText());
+        Bundle args = getTimeFromLabel(tf.getText());
         args.putInt("id", v.getId());
         TimePickerFragment newFragment = new TimePickerFragment();
         newFragment.setArguments(args);
