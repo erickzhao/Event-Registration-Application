@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -81,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void addEvent(View v){
         TextView eventName = (TextView) findViewById(R.id.newevent_name);
+        TextView eventStartTime = (TextView) findViewById(R.id.newevent_start_time);
+        TextView eventEndTime = (TextView) findViewById(R.id.newevent_end_time);
+        TextView eventTextView = (TextView) findViewById(R.id.newevent_name);
 
         EventRegistrationController ec = new EventRegistrationController();
 
