@@ -10,6 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.sql.Date;
+import java.sql.Time;
+
+import ca.mcgill.ecse321.eventregistration.application.EventRegistration;
+import ca.mcgill.ecse321.eventregistration.controller.EventRegistrationController;
+import ca.mcgill.ecse321.eventregistration.controller.InvalidInputException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        refreshData();
+    }
+
+    private void refreshData(){
+        TextView tv = (TextView) findViewById(R.id.newparticipant_name);
+        tv.setText("");
     }
 
     @Override
@@ -52,6 +66,37 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void addParticipant(View v){
+        TextView tv = (TextView) findViewById(R.id.newparticipant_name);
+        EventRegistrationController pc = new EventRegistrationController();
+
+        try{
+            pc.createParticipant(tv.getText().toString());
+        } catch(InvalidInputException e){
+            //TODO: handle error
+        }
+
+        refreshData();
+    }
+
+    public void addEvent(View v){
+        TextView eventName = (TextView) findViewById(R.id.newevent_name);
+
+        EventRegistrationController ec = new EventRegistrationController();
+
+
+
+        refreshData();
+    }
+
+    public void register(View v){
+        TextView participantName = (TextView) findViewById(R.id.selectedParticipant);
+        TextView eventName = (TextView) findViewById(R.id.selectedEvent);
+
+        EventRegistrationController rc = new EventRegistrationController();
+
+    }
+
     private Bundle getTimeFromLabel(CharSequence text) {
         Bundle rtn = new Bundle();
         String comps[] = text.toString().split(":");
@@ -61,8 +106,10 @@ public class MainActivity extends AppCompatActivity {
             hour = Integer.parseInt(comps[0]); minute = Integer.parseInt(comps[1]);
         }
         rtn.putInt("hour", hour); rtn.putInt("minute", minute);
-        return rtn; }
-    private Bundle getDateFromLabel(CharSequence text) { Bundle rtn = new Bundle();
+        return rtn;
+    }
+    private Bundle getDateFromLabel(CharSequence text) {
+        Bundle rtn = new Bundle();
         String comps[] = text.toString().split("-");
         int day = 1;
         int month = 1;

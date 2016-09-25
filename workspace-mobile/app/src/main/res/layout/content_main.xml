@@ -27,7 +27,8 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/participantspinner_label"/>
+                android:text="@string/participantspinner_label"
+                android:id="@+id/selectedParticipant"/>
 
             <Spinner android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/eventspinner_label"/>
+                android:text="@string/eventspinner_label"
+                android:id="@+id/selectedEvent"/>
 
             <Spinner android:layout_height="wrap_content"
                 android:layout_width="wrap_content"

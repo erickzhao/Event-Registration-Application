@@ -29,4 +29,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/EventRegistration.jar')
     compile files('libs/xstream-1.4.7.jar')
+    compile files('libs/EventRegistration.jar')
 }
