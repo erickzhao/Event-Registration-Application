@@ -5,7 +5,7 @@
 <stringAttribute key="ATTR_INI_LOCATION" value="C:\Users\Andre\AppData\Local\Temp\zend_debug\session7950864505813723945.tmp\php.ini"/>
 <stringAttribute key="ATTR_LOCATION" value="C:\xampp\php\php.exe"/>
 <stringAttribute key="ATTR_PHP_TOOL_QUALIFIED_NAME" value="org.phpsrc.eclipse.pti.tools.phpunit:PHPUnit"/>
-<stringAttribute key="exeDebugArguments" value="--log-json php://stdout ControllerTest &quot;C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\test\ControllerTest.php&quot;"/>
+<stringAttribute key="exeDebugArguments" value="--log-json php://stdout PersistenceEventRegistrationTest &quot;C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\test\PersistenceEventRegistrationTest.php&quot;"/>
 <booleanAttribute key="firstLineBreakpoint" value="false"/>
 <booleanAttribute key="org.eclipse.debug.ui.ATTR_CONSOLE_OUTPUT_ON" value="true"/>
 <booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>

@@ -4,7 +4,7 @@ require_once __DIR__.'\..\model\Event.php';
 require_once __DIR__.'\..\model\Participant.php';
 require_once __DIR__.'\..\model\Registration.php';
 require_once __DIR__.'\..\model\RegistrationManager.php';
-require_once __DIR__.'\..\persistence\PersistenceEventRegistration.php';
+require_once __DIR__.'\..\persistence\PersistenceEventRegistration.php'
 
 class Controller{
 	public function __construct(){

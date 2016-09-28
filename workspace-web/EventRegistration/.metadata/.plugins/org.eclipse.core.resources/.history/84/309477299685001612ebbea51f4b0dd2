@@ -11,7 +11,7 @@ try{
 	}
 	$event = NULL;
 	if (isset($_POST['eventspinner'])){
-		$event = $_POST['eventspinner'];
+		$event = $_POST('eventspinner');
 	}
 	$c->register($participant,$event);
 } catch (Exception $e){
