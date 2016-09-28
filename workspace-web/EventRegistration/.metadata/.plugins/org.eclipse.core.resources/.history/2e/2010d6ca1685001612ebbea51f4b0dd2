@@ -1,0 +1,21 @@
+<?php
+require_once 'C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\controller\Inputvalidator.php';
+require_once 'C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\persistence\PersistenceEventRegistration.php';
+require_once 'C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\model\RegistrationManager.php';
+require_once 'C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\model\Participant.php';
+require_once 'C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\model\Event.php';
+
+class Controller{
+	public function __construct(){
+		
+	}
+	public function createParticipant($participant_name){
+		
+	}
+	public function createEvent($event_name, $event_date, $starttime, $endtime){	
+	
+	}
+	public function register($aParticipant, $aEvent){
+		
+	}	
+}

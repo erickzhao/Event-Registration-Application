@@ -1,0 +1,20 @@
+<?php
+require_once 'controller/Controller.php';
+session_start();
+$_SESSION["errorRegisterParticipant"] = "";
+$_SESSION["errorRegisterEvent"]="";
+$c = new Controller();
+try{
+	$participant = NULL;
+	if (isset($_POST['participantspinner'])){
+		$participant = $_POST['participantspinner'];
+	}
+	$event = NULL;
+	if (isset($_POST['eventspinner'])){
+		$event = $_POST('eventspinner');
+	}
+	$c->register($participant,$event);
+} catch (Exception $e){
+	
+}
+?>

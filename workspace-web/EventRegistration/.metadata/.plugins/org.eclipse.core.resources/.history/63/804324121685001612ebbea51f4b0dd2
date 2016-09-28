@@ -1,0 +1,12 @@
+<?php
+class Controller{
+	public function __construct(){
+		
+	}
+	public function createParticipant($participant_name){
+		
+	}
+	public function createEvent($event_name, $event_date, $starttime, $endtime){
+		
+	}
+}
