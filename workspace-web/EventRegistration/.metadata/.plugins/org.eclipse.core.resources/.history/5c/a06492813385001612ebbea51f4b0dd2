@@ -1,0 +1,11 @@
+<?php
+require_once "controller/Controller.php";
+session_start();
+$c = new Controller();
+try{
+	$c->createEvent($_POST['event_name'], $_POST['event_date'], $_POST['starttime'], $_POST['endtime']);
+} catch (Exception $e){
+	
+}
+
+?>

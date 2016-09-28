@@ -21,7 +21,7 @@ try{
 			$_SESSION["errorRegisterParticipant"]=substr($error,1);
 		}
 		if (substr($error,0,1)=="2"){
-			$_SESSION["errorRegisterEvent"] = substr($error,1);
+			$_SESSION["errorRegisterEvent"] = substr($error,2);
 		}
 	}
 }

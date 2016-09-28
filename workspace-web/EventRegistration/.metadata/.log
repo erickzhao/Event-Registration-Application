@@ -175,3 +175,11 @@ java.net.SocketTimeoutException: Read timed out
 	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
 	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.help.base 4 0 2016-09-28 00:31:23.886
+!MESSAGE Help index declared, but missing for plugin org.eclipse.php.help.
+
+!ENTRY org.eclipse.help.base 4 4 2016-09-28 00:31:35.858
+!MESSAGE Help documentation could not be indexed completely.
+!SUBENTRY 1 org.eclipse.help.base 4 4 2016-09-28 00:31:35.858
+!MESSAGE Help document /org.lejos.ev3.ldt/html/usermanual/firmwareupload.html cannot be opened.

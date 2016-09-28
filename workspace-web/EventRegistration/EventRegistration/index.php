@@ -66,15 +66,43 @@
 		<form action = "addevent.php" method="post">
 			<fieldset>
 			<br>
-			Event Name:<br>
-			<input type="text" name="event_name" placeholder="Enter event name here"/><br>
-			Event Date and time:<br>
-			<input type="date" name="event_date" value="<?php echo date('Y-m-d'); ?>" /><br>
-			Date :<br> <!--Add better way to select the date-->
-			<input type="time" name="starttime" value="<?php echo date('H:i'); ?>" /> <br>
-			<input type="time" name="endtime" value="<?php echo date('H:i'); ?>" /> <br>
-			<!-- Also add start/end times-->
-			<input type="submit" value="submit">	
+			<p> Event Name: <input type="text" name="event_name" placeholder="Enter event name here"/>
+			<span class="error">
+			<?php
+			if (isset($_SESSION['errorEventName']) && !empty($_SESSION['errorEventName'])){
+				echo " * " . $_SESSION["errorEventName"];
+			} 
+			?>
+			</span></p>
+			<br>
+			<p> Event Date: <input type="date" name="event_date" value="<?php echo date('Y-m-d'); ?>" />
+			<span class="error">
+			<?php
+			if (isset($_SESSION['errorEventDate']) && !empty($_SESSION['errorEventDate'])){
+				echo " * " . $_SESSION["errorEventDate"];
+			} 
+			?>
+			</span></p>
+			<br>
+			<p> Event Start Time: <input type="time" name="starttime" value="<?php echo date('H:i'); ?>" />
+			<span class="error">
+			<?php
+			if (isset($_SESSION['errorEventstarttime']) && !empty($_SESSION['errorEventstarttime'])){
+				echo " * " . $_SESSION["errorEventstarttime"];
+			} 
+			?>
+			</span></p>
+			<br>
+			<p> Event End Time: <input type="time" name="endtime" value="<?php echo date('H:i'); ?>" />
+			<span class="error">
+			<?php
+			if (isset($_SESSION['errorEventendtime']) && !empty($_SESSION['errorEventendtime'])){
+				echo " * " . $_SESSION["errorEventendtime"];
+			} 
+			?>
+			</span></p>
+			<br>
+			<input type="submit" value="Add event">	
 			<br>
 			</fieldset>
 		</form>

@@ -27,7 +27,31 @@ class Controller{
 		}
 	}
 	public function createEvent($event_name, $event_date, $starttime, $endtime){	
-	
+		//1. Validate input text
+		$eventname = InputValidator::validate_input($event_name);
+		//2. Validate all input
+		$error="";
+		if ($eventname == null || strlen($eventname)==0){
+			$error="@1Event name cannot be empty! ";
+		} else if (strtotime($event_date)==false){
+			$error="@2Event date must be specified correctly (YYYY-MM-DD)! ";
+		} else if (strtotime($starttime)==false){
+			$error="@3Event start time must be specified correctly (HH:MM)! ";
+		}else if (strtotime($starttime==false)){
+			$error="@4Event end time must be specified correctly (HH:MM)!";
+		}
+		//Throw exception if error occurred
+		if (strlen($error)>0){ //Means our "error" variable contains an error message
+			throw new Exception(trim($error));
+		}  else { 
+			//Load values
+			$pm = new PersistenceEventRegistration();
+			$rm = $pm->loadDataFromStore();
+			
+			//Add event
+			$event = new Event($eventname, $event_date, $starttime, $endtime);
+			$rm->addEvent($event);
+		}
 	}
 	public function register($aParticipant, $aEvent){
 		//1. Load data
