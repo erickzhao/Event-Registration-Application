@@ -23,7 +23,7 @@
 			echo "<h1>Register</h1>";
 			echo "<form action='register.php' method='post'>";
 			echo "<fieldset>";
-			echo "<p>Name? <select name='participantspinner'>";
+			echo "<p>Name?</p> <select name='participantspinner'>";
 			foreach ($rm->getParticipants() as $participant){
 				echo "<option>" . $participant->getName() . "</option>";
 			}

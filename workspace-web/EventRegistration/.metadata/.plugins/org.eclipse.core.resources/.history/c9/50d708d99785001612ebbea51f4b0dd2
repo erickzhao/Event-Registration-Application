@@ -4,10 +4,7 @@ session_start();
 $c = new Controller();
 try{
 	$c->createEvent($_POST['event_name'], $_POST['event_date'], $_POST['starttime'], $_POST['endtime']);
-	$_SESSION["errorEventName"]="";
-	$_SESSION["errorEventDate"]="";
-	$_SESSION["errorEventstarttime"]="";
-	$_SESSION["errorEventendtime"]="";
+	$_SESSION['errorEventName']="";
 } catch (Exception $e){
 	$errors=explode("@", $e->getMessage());
 	foreach($errors as $error){
