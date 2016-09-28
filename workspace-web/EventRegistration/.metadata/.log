@@ -183,3 +183,15 @@ java.net.SocketTimeoutException: Read timed out
 !MESSAGE Help documentation could not be indexed completely.
 !SUBENTRY 1 org.eclipse.help.base 4 4 2016-09-28 00:31:35.858
 !MESSAGE Help document /org.lejos.ev3.ldt/html/usermanual/firmwareupload.html cannot be opened.
+
+!ENTRY org.eclipse.php.ui 4 10001 2016-09-28 10:43:27.705
+!MESSAGE preference option missing: org.phpsrc.eclipse.pti.tools.phpunit/php_executable (org.phpsrc.eclipse.pti.tools.phpunit.ui.preferences.PHPUnitConfigurationBlock)
+
+!ENTRY org.eclipse.php.ui 4 10001 2016-09-28 10:43:27.765
+!MESSAGE preference option missing: org.phpsrc.eclipse.pti.tools.phpunit/pear_library (org.phpsrc.eclipse.pti.tools.phpunit.ui.preferences.PHPUnitConfigurationBlock)
+
+!ENTRY org.eclipse.php.ui 4 10001 2016-09-28 10:43:27.818
+!MESSAGE preference option missing: org.phpsrc.eclipse.pti.tools.phpunit/generate_code_coverage (org.phpsrc.eclipse.pti.tools.phpunit.ui.preferences.PHPUnitConfigurationBlock)
+
+!ENTRY org.eclipse.php.ui 4 10001 2016-09-28 10:43:27.864
+!MESSAGE preference option missing: org.phpsrc.eclipse.pti.tools.phpunit/no_namespace_check (org.phpsrc.eclipse.pti.tools.phpunit.ui.preferences.PHPUnitConfigurationBlock)

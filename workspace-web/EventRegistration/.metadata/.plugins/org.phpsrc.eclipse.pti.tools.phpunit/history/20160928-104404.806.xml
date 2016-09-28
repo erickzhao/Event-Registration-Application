@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunTest" project="EventRegistration" tests="12" started="12" failures="7" errors="0" ignored="0">
+  <testsuite name="ControllerTest" time="1.314">
+    <testcase name="testCreateParticipant" classname="ControllerTest" time="1.314"/>
+    <testcase name="testCreateParticipantNull" classname="ControllerTest" time="0.0"/>
+    <testcase name="testCreateParticipantEmpty" classname="ControllerTest" time="0.034"/>
+    <testcase name="testCreateParticipantSpaces" classname="ControllerTest" time="0.018"/>
+    <testcase name="testCreateEvent" classname="ControllerTest" time="0.409">
+      <failure>Failed asserting that 0 matches expected 1.</failure>
+    </testcase>
+    <testcase name="testCreateEventNull" classname="ControllerTest" time="0.077">
+      <failure>Failed asserting that two strings are equal.</failure>
+    </testcase>
+    <testcase name="testCreateEventEmpty" classname="ControllerTest" time="0.061">
+      <failure>Failed asserting that two strings are equal.</failure>
+    </testcase>
+    <testcase name="testCreateEventSpaces" classname="ControllerTest" time="0.108">
+      <failure>Failed asserting that two strings are equal.</failure>
+    </testcase>
+    <testcase name="testCreateEventEndTimeBeforeStartTime" classname="ControllerTest" time="0.097">
+      <failure>Failed asserting that two strings are equal.</failure>
+    </testcase>
+    <testcase name="testRegister" classname="ControllerTest" time="0.082">
+      <failure>Failed asserting that 0 matches expected 1.</failure>
+    </testcase>
+    <testcase name="testRegisterNull" classname="ControllerTest" time="0.077"/>
+    <testcase name="testRegisterParticipantAndEventDoNotExist" classname="ControllerTest" time="0.071">
+      <failure>Failed asserting that 0 matches expected 1.</failure>
+    </testcase>
+  </testsuite>
+</testrun>

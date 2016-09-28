@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunTest" project="EventRegistration" tests="12" started="10" failures="0" errors="1" ignored="0">
+  <testsuite name="ControllerTest" time="0.118">
+    <testcase name="testCreateParticipant" classname="ControllerTest" time="0.118"/>
+    <testcase name="testCreateParticipantNull" classname="ControllerTest" time="0.016"/>
+    <testcase name="testCreateParticipantEmpty" classname="ControllerTest" time="0.014"/>
+    <testcase name="testCreateParticipantSpaces" classname="ControllerTest" time="0.024"/>
+    <testcase name="testCreateEvent" classname="ControllerTest" time="0.042"/>
+    <testcase name="testCreateEventNull" classname="ControllerTest" time="0.015"/>
+    <testcase name="testCreateEventEmpty" classname="ControllerTest" time="0.015"/>
+    <testcase name="testCreateEventSpaces" classname="ControllerTest" time="0.017"/>
+    <testcase name="testCreateEventEndTimeBeforeStartTime" classname="ControllerTest" time="0.016"/>
+    <testcase name="testRegister" classname="ControllerTest" time="0.099">
+      <error>Fatal error: Class 'Registration' not found in C:\Users\Andre\Desktop\Andrei\Projects\ECSE321\EventRegistrationApplication\workspace-web\EventRegistration\EventRegistration\controller\Controller.php on line 97</error>
+    </testcase>
+  </testsuite>
+</testrun>

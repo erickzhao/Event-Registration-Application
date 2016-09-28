@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunTest" project="EventRegistration" tests="12" started="12" failures="4" errors="0" ignored="0">
+  <testsuite name="ControllerTest" time="0.116">
+    <testcase name="testCreateParticipant" classname="ControllerTest" time="0.116"/>
+    <testcase name="testCreateParticipantNull" classname="ControllerTest" time="0.022"/>
+    <testcase name="testCreateParticipantEmpty" classname="ControllerTest" time="0.023"/>
+    <testcase name="testCreateParticipantSpaces" classname="ControllerTest" time="0.022"/>
+    <testcase name="testCreateEvent" classname="ControllerTest" time="0.062">
+      <failure/>
+    </testcase>
+    <testcase name="testCreateEventNull" classname="ControllerTest" time="0.017"/>
+    <testcase name="testCreateEventEmpty" classname="ControllerTest" time="0.016"/>
+    <testcase name="testCreateEventSpaces" classname="ControllerTest" time="0.015"/>
+    <testcase name="testCreateEventEndTimeBeforeStartTime" classname="ControllerTest" time="0.047">
+      <failure>Failed asserting that two strings are equal.</failure>
+    </testcase>
+    <testcase name="testRegister" classname="ControllerTest" time="0.043">
+      <failure/>
+    </testcase>
+    <testcase name="testRegisterNull" classname="ControllerTest" time="0.018"/>
+    <testcase name="testRegisterParticipantAndEventDoNotExist" classname="ControllerTest" time="0.04">
+      <failure/>
+    </testcase>
+  </testsuite>
+</testrun>

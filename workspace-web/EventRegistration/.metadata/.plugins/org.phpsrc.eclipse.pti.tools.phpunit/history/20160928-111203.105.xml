@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunTest" project="EventRegistration" tests="12" started="12" failures="4" errors="0" ignored="0">
+  <testsuite name="ControllerTest" time="0.151">
+    <testcase name="testCreateParticipant" classname="ControllerTest" time="0.151"/>
+    <testcase name="testCreateParticipantNull" classname="ControllerTest" time="0.017"/>
+    <testcase name="testCreateParticipantEmpty" classname="ControllerTest" time="0.017"/>
+    <testcase name="testCreateParticipantSpaces" classname="ControllerTest" time="0.014"/>
+    <testcase name="testCreateEvent" classname="ControllerTest" time="0.064">
+      <failure>Failed asserting that 0 matches expected 1.</failure>
+    </testcase>
+    <testcase name="testCreateEventNull" classname="ControllerTest" time="0.018"/>
+    <testcase name="testCreateEventEmpty" classname="ControllerTest" time="0.018"/>
+    <testcase name="testCreateEventSpaces" classname="ControllerTest" time="0.016"/>
+    <testcase name="testCreateEventEndTimeBeforeStartTime" classname="ControllerTest" time="0.037">
+      <failure>Failed asserting that two strings are equal.</failure>
+    </testcase>
+    <testcase name="testRegister" classname="ControllerTest" time="0.056">
+      <failure>Failed asserting that 0 matches expected 1.</failure>
+    </testcase>
+    <testcase name="testRegisterNull" classname="ControllerTest" time="0.018"/>
+    <testcase name="testRegisterParticipantAndEventDoNotExist" classname="ControllerTest" time="0.05">
+      <failure>Failed asserting that 0 matches expected 1.</failure>
+    </testcase>
+  </testsuite>
+</testrun>
