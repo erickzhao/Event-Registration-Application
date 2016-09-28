@@ -2,7 +2,7 @@
 class PersistenceEventRegistration{
 	private $filename;
 	
-	function __construc($filename = 'data.txt'){
+	function __construct($filename = 'data.txt'){
 		$this->filename = $filename;
 	}
 	

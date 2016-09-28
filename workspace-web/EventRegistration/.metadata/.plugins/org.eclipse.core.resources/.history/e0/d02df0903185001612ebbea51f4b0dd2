@@ -13,7 +13,6 @@
 			require_once "model/Registration.php";
 			require_once "model/RegistrationManager.php";
 			require_once "model/Event.php";
-			require_once "persistence/PersistenceEventRegistration.php";
 			session_start();
 			
 			//Retreive data from the model
