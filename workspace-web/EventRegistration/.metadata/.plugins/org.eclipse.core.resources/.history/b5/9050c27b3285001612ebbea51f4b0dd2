@@ -20,7 +20,7 @@
 			$pm = new PersistenceEventRegistration();
 			$rm = $pm->loadDataFromStore();
 			
-			echo "<h1>Register</h1>";
+			echo "<h1>Register</h1>"
 			echo "<form action='register.php' method='post'>";
 			echo "<fieldset>";
 			echo "<p>Name?</p> <select name='participantspinner'>";
