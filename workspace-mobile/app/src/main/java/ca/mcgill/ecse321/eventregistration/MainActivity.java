@@ -1,8 +1,6 @@
 package ca.mcgill.ecse321.eventregistration;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,23 +9,17 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import java.io.File;
-import java.sql.Date;
-import java.sql.Time;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import ca.mcgill.ecse321.eventregistration.application.EventRegistration;
 import ca.mcgill.ecse321.eventregistration.controller.EventRegistrationController;
 import ca.mcgill.ecse321.eventregistration.controller.InvalidInputException;
 import ca.mcgill.ecse321.eventregistration.model.Event;
 import ca.mcgill.ecse321.eventregistration.model.Participant;
 import ca.mcgill.ecse321.eventregistration.model.RegistrationManager;
 import ca.mcgill.ecse321.eventregistration.persistence.PersistenceEventRegistration;
-import ca.mcgill.ecse321.eventregistration.persistence.PersistenceXStream;
 
 public class MainActivity extends AppCompatActivity {
 
