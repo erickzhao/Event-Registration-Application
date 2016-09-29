@@ -8,9 +8,15 @@ import ca.mcgill.ecse321.eventregistration.model.Registration;
 import ca.mcgill.ecse321.eventregistration.model.RegistrationManager;
 
 public class PersistenceEventRegistration {
+	
+	private static String filename = "eventregistration.xml";
+	
+	public static void setFilename(String name){
+		filename = name;
+	}
 
 	private static void initializeXStream(){
-		PersistenceXStream.setFilename("eventregistration.xml");
+		PersistenceXStream.setFilename(filename);
 		PersistenceXStream.setAlias("event", Event.class);
 		PersistenceXStream.setAlias("participant", Participant.class);
 		PersistenceXStream.setAlias("registration", Registration.class);

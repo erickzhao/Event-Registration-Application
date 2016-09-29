@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.io.File;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Calendar;
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Set up persistence layer to current directory
+        PersistenceEventRegistration.setFilename(getFilesDir().getAbsolutePath()+File.separator+"eventregistration.xml");
+        PersistenceEventRegistration.loadEventRegistrationModel();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
