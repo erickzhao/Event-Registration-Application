@@ -35,13 +35,19 @@ public class MainActivity extends AppCompatActivity {
     private String errorEvent = null;
     private HashMap<Integer, Participant> participants;
     private HashMap<Integer, Event> events;
+    private static boolean isFirstLaunch = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //Set up persistence layer to current directory
-        PersistenceEventRegistration.setFilename(getFilesDir().getAbsolutePath()+File.separator+"eventregistration.xml");
-        PersistenceEventRegistration.loadEventRegistrationModel();
+        //runs only on first instance of onCreate(). Does not re-run when activity is killed and revived.
+        if (isFirstLaunch){
+            //Set up persistence layer to current directory and get data.
+            PersistenceEventRegistration.setFilename(getFilesDir().getAbsolutePath()+File.separator+"eventregistration.xml");
+            PersistenceEventRegistration.loadEventRegistrationModel();
+            isFirstLaunch = false;
+        }
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
