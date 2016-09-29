@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             isFirstLaunch = false;
         }
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -132,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         } catch(InvalidInputException e){
             errorParticipant = e.getMessage();
         }
-
         refreshData();
     }
 
@@ -157,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
         }catch (InvalidInputException e){
             errorEvent = e.getMessage();
         }
-
         refreshData();
     }
 
@@ -175,10 +172,8 @@ public class MainActivity extends AppCompatActivity {
             rc.register(selectedParticipant, selectedEvent);
         } catch (InvalidInputException e){
             //no error is currently possible given the UI
-
             errorRegister = e.getMessage();
         }
-
     }
 
     public void showDatePickerDialog(View v) {
@@ -234,17 +229,12 @@ public class MainActivity extends AppCompatActivity {
         if (comps.length == 3) {
             day = Integer.parseInt(comps[0]); month = Integer.parseInt(comps[1]); year = Integer.parseInt(comps[2]);
         }
-
         String dateString = year+"-"+month+"-"+day;
-
-        java.sql.Date returnDate = java.sql.Date.valueOf(dateString);
-
-        return returnDate;
+        return java.sql.Date.valueOf(dateString);
     }
 
     private java.sql.Time getSqlTimeFromLabel(CharSequence text) {
         String timeString = text.toString()+":00";
-
         return java.sql.Time.valueOf(timeString);
 
 
