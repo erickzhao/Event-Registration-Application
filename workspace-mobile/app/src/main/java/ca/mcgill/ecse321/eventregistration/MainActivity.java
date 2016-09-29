@@ -31,7 +31,8 @@ import ca.mcgill.ecse321.eventregistration.persistence.PersistenceXStream;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String error = null;
+    private String errorParticipant = null;
+    private String errorEvent = null;
     private HashMap<Integer, Participant> participants;
     private HashMap<Integer, Event> events;
 
@@ -63,36 +64,44 @@ public class MainActivity extends AppCompatActivity {
 
         RegistrationManager rm = RegistrationManager.getInstance();
 
+        //Reset text fields
+
         TextView participantNameView = (TextView) findViewById(R.id.newparticipant_name);
-        participantNameView.setText("");
-
         TextView eventNameView = (TextView) findViewById(R.id.newevent_name);
-        eventNameView.setText("");
 
-        // Initialize the data in the participant and spinner
-        Spinner participantSpinner = (Spinner) findViewById(R.id.participantspinner);
-        ArrayAdapter<CharSequence> participantAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
-        participantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.participants = new HashMap<Integer, Participant>();
-        int i = 0;
-        for (Iterator<Participant> participants = rm.getParticipants().iterator(); participants.hasNext(); i++) {
-            Participant p = participants.next();
-            participantAdapter.add(p.getName());
-            this.participants.put(i, p);
-        }
-        participantSpinner.setAdapter(participantAdapter);
+        participantNameView.setError(errorParticipant);
+        eventNameView.setError(errorEvent);
 
-        Spinner eventSpinner = (Spinner) findViewById(R.id.eventspinner);
-        ArrayAdapter<CharSequence> eventAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
-        eventAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.events = new HashMap<Integer, Event>();
-        int j = 0;
-        for (Iterator<Event> events = rm.getEvents().iterator(); events.hasNext(); j++) {
-            Event e = events.next();
-            eventAdapter.add(e.getName());
-            this.events.put(j, e);
+        if (errorEvent == null && errorParticipant == null){
+            participantNameView.setText("");
+            eventNameView.setText("");
+
+            // Initialize the data in the participant and spinner
+            Spinner participantSpinner = (Spinner) findViewById(R.id.participantspinner);
+            ArrayAdapter<CharSequence> participantAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+            participantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            this.participants = new HashMap<Integer, Participant>();
+            int i = 0;
+            for (Iterator<Participant> participants = rm.getParticipants().iterator(); participants.hasNext(); i++) {
+                Participant p = participants.next();
+                participantAdapter.add(p.getName());
+                this.participants.put(i, p);
+            }
+            participantSpinner.setAdapter(participantAdapter);
+
+            Spinner eventSpinner = (Spinner) findViewById(R.id.eventspinner);
+            ArrayAdapter<CharSequence> eventAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+            eventAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            this.events = new HashMap<Integer, Event>();
+            int j = 0;
+            for (Iterator<Event> events = rm.getEvents().iterator(); events.hasNext(); j++) {
+                Event e = events.next();
+                eventAdapter.add(e.getName());
+                this.events.put(j, e);
+            }
+            eventSpinner.setAdapter(eventAdapter);
         }
-        eventSpinner.setAdapter(eventAdapter);
+
 
     }
 
@@ -123,10 +132,13 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.newparticipant_name);
         EventRegistrationController pc = new EventRegistrationController();
 
+        errorEvent = null;
+        errorParticipant = null;
+
         try{
             pc.createParticipant(tv.getText().toString());
         } catch(InvalidInputException e){
-            error = e.getMessage();
+            errorParticipant = e.getMessage();
         }
 
         refreshData();
@@ -145,10 +157,13 @@ public class MainActivity extends AppCompatActivity {
 
         EventRegistrationController ec = new EventRegistrationController();
 
+        errorEvent = null;
+        errorParticipant = null;
+
         try{
             ec.createEvent(eventName,eventDate,eventStartTime,eventEndTime);
         }catch (InvalidInputException e){
-            error = e.getMessage();
+            errorEvent = e.getMessage();
         }
 
         refreshData();
@@ -167,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             rc.register(selectedParticipant, selectedEvent);
         } catch (InvalidInputException e){
-            error = e.getMessage();
+            //no error is currently possible given the UI
         }
 
     }
