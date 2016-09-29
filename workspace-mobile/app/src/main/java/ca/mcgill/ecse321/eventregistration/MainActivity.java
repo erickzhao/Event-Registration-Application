@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String errorParticipant = null;
     private String errorEvent = null;
+    private String errorRegister = null;
     private HashMap<Integer, Participant> participants;
     private HashMap<Integer, Event> events;
     private static boolean isFirstLaunch = true;
@@ -57,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
         TextView participantNameView = (TextView) findViewById(R.id.newparticipant_name);
         TextView eventNameView = (TextView) findViewById(R.id.newevent_name);
+        TextView registrationErrorView = (TextView) findViewById(R.id.registrationError);
 
         participantNameView.setError(errorParticipant);
         eventNameView.setError(errorEvent);
+        registrationErrorView.setError(errorRegister);
 
-        if (errorEvent == null && errorParticipant == null){
+        if (errorEvent == null && errorParticipant == null && errorRegister == null){
             participantNameView.setText("");
             eventNameView.setText("");
 
@@ -172,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
             rc.register(selectedParticipant, selectedEvent);
         } catch (InvalidInputException e){
             //no error is currently possible given the UI
+
+            errorRegister = e.getMessage();
         }
 
     }
